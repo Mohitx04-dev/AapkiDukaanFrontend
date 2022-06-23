@@ -30,7 +30,7 @@ function Login(props) {
                             Email : data.data.Email,
                             Username : data.data.Username,
                         }
-                        localStorage.setItem('User',JSON.stringify(obj))
+                        localStorage.setItem(props.role,JSON.stringify(obj))
                     }).then(()=>{
                         alert('Logged In')
                         window.location.reload()

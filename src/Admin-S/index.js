@@ -43,7 +43,7 @@ function AdminS() {
       text: "Logout",
     },
   ]
-  let User = localStorage.getItem('User')
+  let User = localStorage.getItem('Seller')
   let Sid = useSellerId()
   var full = window.location.host
   var parts = full.split('.')

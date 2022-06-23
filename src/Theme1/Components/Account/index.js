@@ -127,7 +127,7 @@ function Account() {
       <div className="mt-10 sm:mt-0 text-left">
         <div className="md:grid md:grid-cols-3 md:gap-6">
           {
-            !localStorage.getItem('User') ? <div className=" -mt-24">
+            !localStorage.getItem('Customer') ? <div className=" -mt-24">
             <Login role="Customer"/>
             </div> : null
           }
@@ -135,6 +135,7 @@ function Account() {
               <p className=" text-2xl m-2">{Customer ? "Hello, "+ Customer.FirstName : "Register"}</p>
               {
                 Customer ? 
+                <>
                 <form onSubmit={
                   e=> {
                    e.preventDefault()
@@ -157,6 +158,8 @@ function Account() {
              }>
                 <AccountBox Customer ={Customer} save={true}/>
                 </form>
+                <OrderHistory />
+                </>
                 :  <form onSubmit={
                   e=> {
                    e.preventDefault()

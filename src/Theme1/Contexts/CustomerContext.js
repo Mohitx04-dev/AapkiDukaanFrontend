@@ -10,7 +10,7 @@ export function useCustomer() {
 function CustomerProvider({children}) {
     const [Customer, setCustomer] = useState()
     const [isLoading, setLoading] = useState(true);
-    var Usr = localStorage.getItem('User')
+    var Usr = localStorage.getItem('Customer')
     let headers;
     if(Usr) {
         Usr = JSON.parse(Usr)

@@ -1,23 +1,20 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-const Dummy = [
-    {
-        Id : "324",
-        Date : "24/3/20",
-        Amt :5435
-    },
-    {
-        Id : "324",
-        Date : "24/3/20",
-        Amt :5435
-    },
-    {
-        Id : "324",
-        Date : "24/3/20",
-        Amt :5435
-    }
-]
+import { useCustomer } from "../../Contexts/CustomerContext";
+import { useSellerId } from "../../Contexts/SellerContext";
 function OrderHistory() {
+  const [AllOrders, setAllOrders] = useState([])
+  let sid = useSellerId()
+  let cid = useCustomer()._id
+  useEffect(() => {
+    axios.get('/api/GetOrderbyCustomer/'+sid+'/'+cid).then((data)=>{
+      console.log(data)
+      setAllOrders(data.data)
+    })
+  }, [])
+  
+
   return (
     <div>
         <p className="text-left text-2xl mb-5">Order History</p>
@@ -32,13 +29,13 @@ function OrderHistory() {
         </thead>
         <tbody>
         {
-            Dummy.map(el=>
+            AllOrders.map(el=>
                 {
                     return (
                         <tr>
-                        <Link to={"/OrderHistory/"+el.Id}><th className="underline text-theme">{el.Id}</th></Link>
+                        <Link to={"/Order/"+el._id}><th className="underline text-theme">{el._id}</th></Link>
                         <th>{el.Date}</th>
-                        <th>{el.Amt}</th>
+                        <th>{el.Total}</th>
                         </tr>
                     )
                 }

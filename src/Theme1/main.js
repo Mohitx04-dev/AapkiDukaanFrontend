@@ -34,7 +34,7 @@ function Main(props) {
         <Route  path="Product/:pid" element={<ProductPage/>} ></Route>
         <Route  path="Account/" element={<Account/>} ></Route>
         <Route  path="Checkout" element={<Checkout/>} ></Route>
-        <Route  path="OrderHistory/:id" element={<Success/>} ></Route>
+        <Route  path="Order/:id" element={<Success/>} ></Route>
         <Route  path="OrderHistory" element={<OrderHistory/>} ></Route>
         </Routes> 
         </div>

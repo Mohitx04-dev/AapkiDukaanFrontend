@@ -8,7 +8,7 @@ export function useToken() {
     return useContext(TokenContext)
 }
 function TokenProvider({children}) {
-    var Usr = localStorage.getItem('User')
+    var Usr = localStorage.getItem('Seller')
     let headers;
     if(Usr) {
         Usr = JSON.parse(Usr)

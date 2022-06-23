@@ -168,9 +168,10 @@ function Checkout() {
                           
                         }
                         console.log(Article)
-                        axios.put('api/PlaceOrder',Article).then(()=>{
+                        axios.put('api/PlaceOrder',Article).then((data)=>{
                           alert('Order Placed')
-                          window.location.reload()
+                          console.log(data)
+                          window.location.pathname = '/order/'+data.data._id
                         }).catch(e=>{
                           console.log(e)
                         })
