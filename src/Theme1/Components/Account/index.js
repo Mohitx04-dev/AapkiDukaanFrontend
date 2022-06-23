@@ -2,6 +2,7 @@ import axios from "axios";
 import React from "react";
 import Login from "../../../Components/Login";
 import OrderHistory from "../OrderHistory";
+import {useCustomer} from '../../Contexts/CustomerContext'
 function TextFieldForm(props) {
   return (
     <div className="col-span-6 sm:col-span-1">
@@ -16,13 +17,15 @@ function TextFieldForm(props) {
         name={props.name}
         id={props.id}
         autoComplete={props.oc}
-        value={props.value}
+        defaultValue={props.value}
+        
         className="mt-1 p-3 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
       />
     </div>
   );
 }
 export function AccountBox (props) {
+  console.log(props.Customer)
   return (
     <div className="shadow overflow-hidden sm:rounded-md">
       <div className="px-4 py-5 bg-white sm:p-6">
@@ -33,6 +36,7 @@ export function AccountBox (props) {
             name="FirstName"
             id="first-name"
             oc="given-name"
+            value = {props.Customer ? props.Customer.FirstName : null}
           />
 
           <TextFieldForm
@@ -41,12 +45,14 @@ export function AccountBox (props) {
             name="LastName"
             id="last-name"
             oc="family-name"
+            value = {props.Customer ? props.Customer.LastName : null}
           />
 
           <TextFieldForm
             type="text"
             label="UserName"
             name="Username"
+            value = {props.Customer ? props.Customer.Username : null}
 
           />
           <TextFieldForm
@@ -55,12 +61,14 @@ export function AccountBox (props) {
             name="PhoneNo"
             id="phone-number"
             oc="phone"
+            value = {props.Customer ? props.Customer.PhoneNo : null}
           />
           <TextFieldForm
             type="text"
             label="Street Address"
             name="Street"
             id="Address"
+            value = {props.Customer ? props.Customer.Address.Street : null}
           />
 
           <TextFieldForm
@@ -68,25 +76,31 @@ export function AccountBox (props) {
             label="State"
             name="State"
             id="Address"
+            value = {props.Customer ? props.Customer.Address.State : null}
           />
           <TextFieldForm
             type="number"
             label="PinCode"
             name="Address"
             id="Address"
+            value = {props.Customer ? props.Customer.Address.Pincode : null}
           />
           <TextFieldForm
             type="text"
             label="City"
             name="City"
             id="Address"
+            value = {props.Customer ? props.Customer.Address.City : null}
           />
-            <TextFieldForm
+          {
+            !props.Customer ?  <TextFieldForm
             type="Password"
             label="Password"
             name="Password"
             id="Password"
-          />
+          /> : null
+          }
+           
 
         </div>
       </div>
@@ -105,6 +119,8 @@ export function AccountBox (props) {
   )
 }
 function Account() {
+  let Customer = useCustomer()
+  console.log(Customer)
   return (
     <div className>
       <div className="">
@@ -116,38 +132,64 @@ function Account() {
             </div> : null
           }
             <div className="mt-5 md:mt-0 md:col-span-2">
-              <p className=" text-2xl m-2">Register</p>
-          <form onSubmit={
-               e=> {
-                e.preventDefault()
-                const Article = {
-                    FirstName : e.target[0].value,
-                    LastName : e.target[1].value,
-                    Username : e.target[2].value,
-                    PhoneNo : e.target[3].value,
-                    Street : e.target[4].value,
-                    State : e.target[5].value,
-                    Pincode : e.target[6].value,
-                    City : e.target[7].value ,
-                    Password : e.target[8].value,
-                }
-                console.log(Article)
-                axios.post('/api/create/Customer',Article).then(()=>{
-                  alert('Succesful')
-                  window.location.reload()
-                })
-               }
-          }>
-           <AccountBox save={true} />
-           </form >
+              <p className=" text-2xl m-2">{Customer ? "Hello, "+ Customer.FirstName : "Register"}</p>
+              {
+                Customer ? 
+                <form onSubmit={
+                  e=> {
+                   e.preventDefault()
+                   const Article = {
+                       FirstName : e.target[0].value,
+                       LastName : e.target[1].value,
+                       Username : e.target[2].value,
+                       PhoneNo : e.target[3].value,
+                       Street : e.target[4].value,
+                       State : e.target[5].value,
+                       Pincode : e.target[6].value,
+                       City : e.target[7].value ,
+                   }
+                   console.log(Article)
+                   axios.put('/api/updateCustomer/'+Customer._id,Article).then(()=>{
+                     alert('Succesful')
+                     window.location.reload()
+                   })
+                  }
+             }>
+                <AccountBox Customer ={Customer} save={true}/>
+                </form>
+                :  <form onSubmit={
+                  e=> {
+                   e.preventDefault()
+                   const Article = {
+                       FirstName : e.target[0].value,
+                       LastName : e.target[1].value,
+                       Username : e.target[2].value,
+                       PhoneNo : e.target[3].value,
+                       Street : e.target[4].value,
+                       State : e.target[5].value,
+                       Pincode : e.target[6].value,
+                       City : e.target[7].value ,
+                       Password : e.target[8].value,
+                   }
+                   console.log(Article)
+                   axios.post('/api/create/Customer',Article).then(()=>{
+                     alert('Succesful')
+                     window.location.reload()
+                   })
+                  }
+             }>
+              <AccountBox save={true} />
+              </form >
+              }
+         
           </div>
         </div>
       </div>
               
       </div>
-      <div className="mt-10">
+      {/* <div className="mt-10">
       <OrderHistory />
-      </div>
+      </div> */}
     </div>
   );
 }

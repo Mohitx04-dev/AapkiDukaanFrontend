@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { AccountBox } from "../Account";
+import Account, { AccountBox } from "../Account";
 import Cart from "../Cart";
 import { XIcon } from "@heroicons/react/outline";
 import {
@@ -26,14 +26,16 @@ function Checkout() {
   const [Promo, setPromo] = useState("");
   const [Applied, setApplied] = useState(false)
   let id = useSellerId();
-  let {_id} = useCustomer()
-  console.log(_id)
+  let Customer = useCustomer()
+  
   return (
     <div>
       <p className="text-left text-2xl m-2">Checkout </p>
 
       <div className="flex flex-row justify-between">
-        <AccountBox save={true} />
+        <Account/>
+        {/* <AccountBox save={true} 
+        Customer={Customer}/> */}
         <div as="div" className=" ">
           <div className="overflow-hidden ">
             <div className="max-w-full flex bg-w">
@@ -161,7 +163,7 @@ function Checkout() {
                           Sid : id,
                           Total : Total,
                           Products : productIds,
-                          CustId : _id,
+                          CustId : Customer._id,
                           Type : 'COD',
                           
                         }

@@ -8,7 +8,7 @@ export function useCustomer() {
     return useContext(CustomerContext)
 }
 function CustomerProvider({children}) {
-    const [Customer, setCustomer] = useState({})
+    const [Customer, setCustomer] = useState()
     const [isLoading, setLoading] = useState(true);
     var Usr = localStorage.getItem('User')
     let headers;
