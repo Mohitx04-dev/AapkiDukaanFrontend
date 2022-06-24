@@ -120,6 +120,8 @@ export function AccountBox (props) {
 }
 function Account() {
   let Customer = useCustomer()
+  let page = window.location.pathname.split('/')[1]
+  console.log(page)
   console.log(Customer)
   return (
     <div className>
@@ -158,7 +160,9 @@ function Account() {
              }>
                 <AccountBox Customer ={Customer} save={true}/>
                 </form>
-                <OrderHistory />
+               
+                {  page==='account' ? <OrderHistory /> : null}
+               
                 </>
                 :  <form onSubmit={
                   e=> {

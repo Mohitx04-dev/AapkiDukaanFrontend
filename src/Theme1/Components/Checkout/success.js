@@ -27,7 +27,7 @@ function Success(props) {
         <div>
             <p className="text-left text-2xl font-bold mb-2">{"Order # "+id}</p>
             {/* 20 , 60, 100 */}
-            <ProgressDiv perc={ 20} />  
+            <ProgressDiv perc={Order ? Order.Status * 33.3 : 20} />  
             <div className="flex justify-between mt-5">
                 <p>Order Placed</p>
                 <p>Processing</p>
