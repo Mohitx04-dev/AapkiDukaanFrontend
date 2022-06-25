@@ -30,7 +30,7 @@ function Dropdown(props) {
                 {
                     props.Arr.map((el) => {
                         return (
-                            <Menu.Item>
+                            <Menu.Item key={el}>
                             {({ active }) => (
                               <Link
                                 to="#"

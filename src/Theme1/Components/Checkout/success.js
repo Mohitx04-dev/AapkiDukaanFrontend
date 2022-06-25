@@ -3,7 +3,6 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router'
 import { useSellerId } from '../../Contexts/SellerContext'
-import { AccountBox } from '../Account'
 import CartBox from '../CartBox'
 import ProgressDiv from '../FormComponents/progress'
 function Success(props) {
@@ -13,7 +12,6 @@ function Success(props) {
     const [Products, setProducts] = useState([])
     useEffect(() => {
         axios.get('/api/GetOrderDetail/'+sid+'/'+id).then((data)=>{
-            console.log(data.data)
             setOrder(data.data)
             data.data.Products.forEach(element => {
                 axios.get('/api/getFullProduct/'+sid+'/'+element.Product).then ((d)=>{
@@ -23,8 +21,8 @@ function Success(props) {
                   })
             });
         })
+         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
-    console.log(Products)
     return (
         <div>
             <p className="text-left text-2xl font-bold mb-2">{"Order # "+id}</p>

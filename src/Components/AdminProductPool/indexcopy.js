@@ -1,6 +1,5 @@
 import React, { useEffect,useState } from 'react'
-import Table, { UnivTable } from '../Table'
-import { JsonToTable } from "react-json-to-table";
+import { UnivTable } from '../Table'
 import axios from 'axios';
 import { useToken } from '../../Admin-S/Contexts/token';
 function ProductPool() {
@@ -9,9 +8,9 @@ function ProductPool() {
     let headers = useToken()
     useEffect(() => {
        axios.get("/api/showProduct",{headers: headers}).then(data=>{
-           console.log(data.data)
         setProdPool(data.data)
        })
+                  // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     return (
         <div className="w-full  m-10">

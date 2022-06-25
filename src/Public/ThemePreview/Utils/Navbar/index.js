@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import Basket from "../SVGs/basket";
 import UserIcon from "../SVGs/userIcon";
@@ -46,7 +45,7 @@ function Topbar(props) {
         },
       ].map((el) => {
         return (
-          <div className="mx-2 ">
+          <div className="mx-2 " key={el.text}>
             <Link to={""}>{el.text}</Link>
           </div>
         );

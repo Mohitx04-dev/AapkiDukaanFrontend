@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import {Route, Routes } from 'react-router-dom';
 import Sidebar from "../Components/Sidebar";
 import Sales from "./Components/Sales";
 import Customers from "../Components/Customers";
@@ -9,10 +9,9 @@ import TabsTable from '../Components/TabsTable';
 import WebsiteSettings from './Components/Website';
 import AddProduct from '../Components/AddProduct';
 import TokenProvider from './Contexts/token'
-import SellerDataProvider, { useSellerData, useSellerId } from '../Theme1/Contexts/SellerContext';
+import SellerDataProvider, { useSellerId } from '../Theme1/Contexts/SellerContext';
 import PromoCode from './Components/PromoCode';
 import AddPromoCode from './Components/AddPromo';
-import axios from 'axios';
 import Logout from '../Components/Logout';
 function AdminS() {
   const Menu = [
@@ -25,7 +24,6 @@ function AdminS() {
       link: "sales",
       text: "Sales",
     },
-  ,
     {
       link: "bills",
       text: "Bills",

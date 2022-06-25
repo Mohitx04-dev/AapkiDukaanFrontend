@@ -1,30 +1,29 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { useCart, useCartUpdate, useCartOpen} from '../../Contexts/CartContext'
+import { useCart, useCartUpdate} from '../../Contexts/CartContext'
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router";
 import { useSellerId } from "../../Contexts/SellerContext";
 function ProductCard(props) {
     const products = useCart()
     const sId = useSellerId();
-    console.log(props.pid,sId)
     const [product, setproduct] = useState(0)
     const AddProduct = useCartUpdate().AddProduct
     useEffect(() => {
       axios.get('/api/getFullProduct/'+sId+'/'+props.pid).then ((data)=>{
-        console.log(data.data)
         setproduct(data.data)
       })
+       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
-    const setOpen = useCartOpen().setOpen
     return (
+      product ?
         <div key={products.id} className="group relative mx-2 border-2 p-2 border-searchBarGrey rounded-lg">
         <div className="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden lg:h-80 lg:aspect-none">
         <Link to="#">
           <img
               src={'http://localhost:5000/image/'+product.Photo}
               className="w-full h-full object-center object-cover lg:w-full lg:h-full"
+              alt={product.Name}
           />
           </Link>
         </div>
@@ -54,6 +53,7 @@ function ProductCard(props) {
             
         </div>
       </div>
+      : null
     )
 }
 

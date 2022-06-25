@@ -18,15 +18,14 @@ function CustomerProvider({children}) {
             'Authorization': Usr.token
           }
     }
-    console.log(headers)
     useEffect(() => {
         axios.get('/api/GetCustomerbyToken/',{headers:headers}).then((data)=>{
-            console.log(data)
             setCustomer(data.data)
             setLoading(false)
         }).catch(e=>{
             console.log(e)
         })
+         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     if(Usr) {   
         if (isLoading) {

@@ -9,9 +9,9 @@ function OrderHistory() {
   let cid = useCustomer()._id
   useEffect(() => {
     axios.get('/api/GetOrderbyCustomer/'+sid+'/'+cid).then((data)=>{
-      console.log(data)
       setAllOrders(data.data)
     })
+     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   
 
@@ -32,7 +32,7 @@ function OrderHistory() {
             AllOrders.map(el=>
                 {
                     return (
-                        <tr>
+                        <tr key={el._id}>
                         <Link to={"/Order/"+el._id}><th className="underline text-theme">{el._id}</th></Link>
                         <th>{el.Date}</th>
                         <th>{el.Total}</th>

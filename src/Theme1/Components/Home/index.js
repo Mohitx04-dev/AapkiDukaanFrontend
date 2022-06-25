@@ -4,13 +4,12 @@ import Row from '../HomePageRow'
 
 function Home(props) {
    let {Categories} =  useSellerData()
-   console.log(Categories)
     return (
         <div className="font-theme p-2 ">
             {
                 Categories.map(element => {
                     return (
-                        <Row Category={element}/>
+                        <Row Category={element} key={element}/>
                     )
                     
                 })

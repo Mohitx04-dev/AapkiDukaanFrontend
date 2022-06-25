@@ -58,7 +58,6 @@ function ExecutiveForm() {
               Occupation : e.target[6].value,
               AadharNo : e.target[7].value
           }
-          console.log(Article)
           axios.post("/api/create/Executive",Article).then((data)=>{
               if(data) {
                   alert('Submitted')
@@ -73,7 +72,7 @@ function ExecutiveForm() {
       {
           fields.map(el=>{
               return(
-                  <div className="flex flex-row text-right m-5">
+                  <div className="flex flex-row text-right m-5" key={el.name}>
                   <div className="flex-1 m-2 p-2">
                 <label >
                 {el.label}

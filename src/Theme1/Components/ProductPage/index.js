@@ -1,9 +1,8 @@
-import { data } from "autoprefixer";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 
-import { useCart, useCartUpdate } from "../../Contexts/CartContext";
+import { useCartUpdate } from "../../Contexts/CartContext";
 import { useSellerId } from "../../Contexts/SellerContext";
 
 export default function ProductPage() {
@@ -12,22 +11,15 @@ export default function ProductPage() {
   const {pid} = useParams()
   const [product, setproduct] = useState(0)
   const CartUpdate = useCartUpdate();
-  console.log(CartUpdate);
   const [qty, setQty] = useState(1);
   const [Loading, setLoading] = useState(true)
   useEffect(() => {
     axios.get('/api/getFullProduct/'+sId+'/'+pid).then ((data)=>{
-      console.log(data.data)
       setproduct(data.data)
       setLoading(false)
     })
+     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
-  // useEffect(() => {
-  //   axios.get('/image/'+product.Photo).then(d => {
-  //     console.log(d)
-  //     setImg(d.data)
-  //   })
-  // }, [product])
   if(Loading) {
     return (
       <div className="App">Loading...</div>
@@ -37,7 +29,6 @@ export default function ProductPage() {
     <div className="bg-white">
       <nav aria-label="Breadcrumb">
         <ol
-          role="list"
           className="max-w-2xl mx-auto px-4 flex items-center space-x-2 sm:px-6 lg:max-w-7xl lg:px-8"
         >
         </ol>
@@ -49,6 +40,7 @@ export default function ProductPage() {
             <img
               src={'http://localhost:5000/image/'+product.Photo}
               className="w-full h-full object-center object-cover"
+              alt={product.Name}
             />
           </div>
         </div>
@@ -104,9 +96,7 @@ export default function ProductPage() {
                     onClick={(e) => {
                       e.preventDefault();
                       // for (let i = 0; i < qty; ++i) {
-                        console.log("trying");
                         product["quantity"] = qty;
-                        console.log(product)
                         CartUpdate.AddProduct(product);
                       // }
                     }}

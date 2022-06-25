@@ -7,12 +7,11 @@ function Sales() {
     const [Sales , setSales] = useState()
     useEffect(() => {
         axios.get("/api/GetSales/"+Sid).then(   (data)=>{
-        console.log(data)
           setSales(data.data)
         }).catch((e)=>{
             alert('Invalid Data')
         })
-       
+         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     return (
         <div className="w-full  m-10">

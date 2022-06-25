@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Table, { UnivTable } from "../Table";
+import  { UnivTable } from "../Table";
 import { Link } from "react-router-dom";
 import { useSellerId } from "../../Theme1/Contexts/SellerContext";
 import axios from "axios";
@@ -13,14 +13,12 @@ function Inventory() {
     axios
       .get("/api/findSellerProducts/" + Sid, { headers: headers })
       .then((data) => {
-        console.log(data.data);
-
         setProducts(data.data);
         setisLoading(false);
       });
+                 // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const Delete = (row) => {
-      console.log(row._id)
     axios.put("/api/DeleteProducts/" + Sid, { id: row._id },{headers : headers}).then(() => {
       alert("Delete Successly");
       window.location.reload();

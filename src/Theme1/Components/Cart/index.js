@@ -1,4 +1,4 @@
-import { Fragment, useState } from 'react'
+import { Fragment} from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { XIcon } from '@heroicons/react/outline'
 import { useCart, useCartUpdate, useCartOpen} from '../../Contexts/CartContext'
@@ -12,12 +12,8 @@ function CartBox (props) {
     products.forEach(element => {
         total+=parseInt(element.Price * element.quantity)
     });
-    const AddProduct = CartUpdate.AddProduct
     const RemoveProduct = CartUpdate.RemoveProduct
-    const open = CartOpen.open
-    console.log(open)
     const setOpen = CartOpen.setOpen
-    console.log(setOpen)
     return (
         <div className="absolute inset-0 overflow-hidden">
         <div className="fixed inset-y-0 right-0 pl-10 max-w-full flex bg-w">
@@ -43,7 +39,7 @@ function CartBox (props) {
                     } */}
                   <div className="mt-8">
                     <div className="flow-root">
-                      <ul role="list" className="-my-6 divide-y divide-gray-200">
+                      <ul className="-my-6 divide-y divide-gray-200">
                         { 
                         products.map((product) =>
                         (
@@ -51,6 +47,7 @@ function CartBox (props) {
                             <div className="flex-shrink-0 w-24 h-24 border border-gray-200 rounded-md overflow-hidden">
                               <img
                               src={'http://localhost:5000/image/'+product.Photo}
+                              alt={product.Name}
                                className="w-full h-full object-center object-cover"
                               />
                             </div>
@@ -71,7 +68,6 @@ function CartBox (props) {
                                   <button type="button" 
                                   onClick={e=>{
                                       e.preventDefault()
-                                      console.log(product._id)
                                       RemoveProduct(product._id)
                                   }}
                                   className="font-medium text-indigo-600 hover:text-indigo-500">
@@ -123,7 +119,6 @@ export default function Cart() {
     const CartOpen = useCartOpen()
     const open = CartOpen.open
     const setOpen = CartOpen.setOpen
-    console.log(setOpen)
   return (
     <Transition.Root show={open} as={Fragment}>
     <Dialog as="div" className="fixed inset-0 overflow-hidden" onClose={setOpen}>

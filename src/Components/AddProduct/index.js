@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import FormData from "form-data";
 import {
   useSellerData,
@@ -51,7 +51,6 @@ function AddProduct() {
       headers: { "content-type": "multipart/form-data" },
     };
     axios.post("/upload", formData, config).then((data) => {
-      console.log(data);
       setImgUrl(data.data.url);
       alert('Uploaded, now Submit')
     })
@@ -70,7 +69,6 @@ function AddProduct() {
   };
   const submit = (e) => {
     e.preventDefault();
-    console.log(e.target[0].value);
     let data = {
       Name: e.target[0].value,
       Price: e.target[1].value,
@@ -79,7 +77,6 @@ function AddProduct() {
       Photo: imgUrl,
     };
     axios.put("/api/createProduct", data,{headers : headers}).then((data) => {
-      console.log(data);
       alert("Success");
       window.location.href = "/admin/inventory"
     });
@@ -120,7 +117,7 @@ function AddProduct() {
                     className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   >
                     {Categories.map((el) => {
-                      return <option value={el}>{el}</option>;
+                      return <option value={el} key={el}>{el}</option>;
                     })}
                   </select>
                 </div>

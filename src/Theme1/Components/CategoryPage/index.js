@@ -15,6 +15,7 @@ function CategoryPage() {
         }).catch(e=>{
             setProducts([])
         })
+         // eslint-disable-next-line react-hooks/exhaustive-deps
     },[id])
     const [StartV, setStartV] = useState(0)
     const [EndV, setEndV] = useState(20000)
@@ -28,7 +29,7 @@ function CategoryPage() {
             <SideElements StartV={StartV} EndV={EndV} setStartV={setStartV} setEndV={setEndV}/>
             <div className="mx-10 grid grid-cols-1 w-full">
             {Products.map(el=>{
-               return <ProductCardH product={el}/>
+               return <ProductCardH product={el} key={el}/>
             })}
             </div>
         </div>

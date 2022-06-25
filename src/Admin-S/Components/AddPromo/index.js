@@ -1,6 +1,5 @@
 import axios from "axios";
-import React, { useState, useEffect } from "react";
-import FormData from "form-data";
+import React from "react";
 import { useSellerId } from "../../../Theme1/Contexts/SellerContext";
 import { useToken } from "../../Contexts/token";
 
@@ -30,16 +29,13 @@ function AddPromoCode(props){
     let headers = useToken()
 const submit = (e) => {
     e.preventDefault();
-    console.log(e.target[0].value);
     let data = {
       Code: e.target[0].value,
       Discount: e.target[1].value,
       MaxDiscount: e.target[2].value,
     };
    
-    console.log(data)
     axios.put("/api/CreatePromoCode/"+Sid, data,{headers:headers}).then((data) => {
-      console.log(data);
       alert("Success");
       window.location.href = ('/admin/PromoCode')
     });

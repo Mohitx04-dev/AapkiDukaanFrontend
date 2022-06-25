@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import {Route, Routes } from 'react-router-dom';
 import Sidebar from "../Components/Sidebar";
 
 import Login from '../Components/Login';
@@ -6,9 +6,7 @@ import TabsTable from '../Components/TabsTable';
 import ProductPool from '../Components/AdminProductPool/indexcopy';
 import Clients from '../Components/Clients';
 import TokenProvider from '../Admin-S/Contexts/token';
-import SellerDataProvider, { useSellerData, useSellerId } from '../Theme1/Contexts/SellerContext';
 
-import axios from 'axios';
 import Logout from '../Components/Logout';
 function AdminE() {
   const Menu = [
@@ -29,10 +27,6 @@ function AdminE() {
     },
   ]
   let User = localStorage.getItem('User')
-  let Sid = useSellerId()
-  var full = window.location.host
-  var parts = full.split('.')
-  var sub = parts[0]
   return (
  
    

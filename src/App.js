@@ -3,22 +3,19 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import AdminS from "./Admin-S";
 import Theme1 from "./Theme1";
 import PublicMain from './Public'
-import Cart from "./Theme1/Components/Cart";
 import axios from 'axios'
 import AdminAD from "./Admin-AD";
-import Executive from "./Components/Executive";
 import AdminE from "./Admin-E";
 function App() {
   axios.defaults.baseURL = 'http://localhost:5000'
   let subDomain  = window.location.host.split('.')[0]
   let domainArr = (window.location.host.split('.'))
-  console.log(subDomain)
   return (
     <div className="App overflow-x-hidden">
       <Router>
         
         {
-          domainArr.length==1 ? 
+          domainArr.length===1 ? 
           <Routes>
             
           <Route path={"/executive/*"} element={<AdminE/>} ></Route> 

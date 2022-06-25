@@ -22,14 +22,11 @@ function CartProvider({children}) {
     ])
     const [open, setOpen] = useState(false)
     function AddProduct(item) {
-        console.log(item)
-        let x = 0;
         const Product = Cart.find(el=> {
-            return (el._id==item._id) ;
+            return (el._id===item._id) ;
         })
         if(Product){
             Product["quantity"]+=item["quantity"];
-            console.log(Product["quantity"]);
         }
         else{
             setCart(old => [...old,item]);
@@ -39,9 +36,7 @@ function CartProvider({children}) {
 
     }
     const RemoveProduct = (o) => {
-        console.log(o)
         setCart(Cart.filter(item => item._id !== o));
-        console.log(Cart)
        };
      
     return (

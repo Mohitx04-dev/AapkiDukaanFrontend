@@ -1,19 +1,14 @@
 import React, { useEffect,useState } from 'react'
-import Table,{UnivTable} from '../Table';
-import { JsonToTable } from "react-json-to-table";
+import {UnivTable} from '../Table';
 import axios from 'axios';
-import { useSellerData, useSellerId } from '../../Theme1/Contexts/SellerContext';
-import { Link } from 'react-router-dom';
 import { useToken } from '../../Admin-S/Contexts/token';
 function Executive() {
-    let Sid=useSellerId()
     const [isLoading, setisLoading] = useState(true)
     const [Executive, setExecutive] = useState({
     })
     let headers = useToken()
     useEffect(() => {
        axios.get("/api/GetExecutive/",{headers: headers}).then(data=>{
-           console.log(data.data)
            let executive = data.data.map((el)=>{
                return (
                    {
@@ -25,6 +20,7 @@ function Executive() {
            setExecutive(executive)
            setisLoading(false)
        })
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     const Delete = (row) =>{
         axios.delete("/api/DeleteExecutive/"+row._id,{headers: headers}).then(()=>{

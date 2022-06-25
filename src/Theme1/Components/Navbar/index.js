@@ -1,4 +1,3 @@
-import {useState} from "react";
 import { Link } from "react-router-dom";
 import Basket from "../../Utils/SVGs/basket";
 import UserIcon from "../../Utils/SVGs/userIcon";
@@ -22,7 +21,7 @@ function Topbar() {
           },
         ].map((el)=>{
             return (
-                <div className="mx-2">
+                <div className="mx-2" key={el.text}>
                     <a href={el.link} >{el.text}</a>
                 </div>
             )
@@ -31,8 +30,6 @@ function Topbar() {
     )
 }
 function Navbar(props) {
-  console.log(useCart)
-  console.log(useCartOpen())
   const setOpen = useCartOpen().setOpen
   return (
       <>

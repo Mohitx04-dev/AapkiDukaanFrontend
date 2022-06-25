@@ -20,7 +20,7 @@ function Sbox(props) {
         {
             props.Array.map(el=>{
                 return (
-                    <div className="grid grid-cols-2 mt-4  ">
+                    <div className="grid grid-cols-2 mt-4  " key={el.col1}>
                     <div className="mx-1 mt-2 text-center " >
                        <h2 className="font-reemKufi text-center text-black">{el.col1}</h2>
                     </div>

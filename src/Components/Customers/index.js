@@ -1,12 +1,8 @@
 import React, { useEffect,useState } from 'react'
-import Table,{UnivTable} from '../Table';
-import { JsonToTable } from "react-json-to-table";
+import {UnivTable} from '../Table';
 import axios from 'axios';
-import { useSellerData, useSellerId } from '../../Theme1/Contexts/SellerContext';
-import { Link } from 'react-router-dom';
 import { useToken } from '../../Admin-S/Contexts/token';
 function Customer() {
-    let Sid=useSellerId()
     const [isLoading, setisLoading] = useState(true)
     const [Customer, setCustomer] = useState({
     })
@@ -14,7 +10,6 @@ function Customer() {
     useEffect(() => {
        axios.get("/api/showCustomer/",
        {headers: headers}).then(data=>{
-           console.log(data.data)
            let customers = data.data.map((el)=>{
                return (
                    {
@@ -26,6 +21,7 @@ function Customer() {
            setCustomer(customers)
            setisLoading(false)
        })
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
   
     if(isLoading) {

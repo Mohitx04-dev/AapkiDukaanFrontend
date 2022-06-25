@@ -1,13 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 function Column(props) {
-    console.log(props)
     return (
         <div className="flex flex-col mb-10 m-auto text-left max-w-xs mt-10">
         <span className="text-2xl mb-5">{props.title}</span>
         {props.Arr.map(el=>{
             return (
-                <Link className="hover:bg-searchBarGrey text-themeColor   text-left rounded-md p-1 underline" to={"#"}>{el}</Link>
+                <Link key={el} className="hover:bg-searchBarGrey text-themeColor   text-left rounded-md p-1 underline" to={"#"}>{el}</Link>
             )
         })}
          </div>

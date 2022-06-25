@@ -11,7 +11,7 @@ export function UnivTable (props) {
           <tr className="">
               {Headers.map(th => {
                   return (
-                      <th className="p-3">{th}</th>
+                      <th className="p-3" key={th}>{th}</th>
                   )
               })}
               {   props.Delete ? <td>Delete</td> : null}
@@ -21,11 +21,11 @@ export function UnivTable (props) {
           {
             props.Responses.map(th => {
               return (
-                <tr className="m-3">   
+                <tr className="m-3" key={th}>   
                 {Headers.map(function(key) {
                   let v = th[key]
                   return (
-                    <td className="p-3">{v}</td>
+                    <td className="p-3" key={v}>{v}</td>
                   )
                 })}
                 {

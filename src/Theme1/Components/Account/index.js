@@ -25,7 +25,6 @@ function TextFieldForm(props) {
   );
 }
 export function AccountBox (props) {
-  console.log(props.Customer)
   return (
     <div className="shadow overflow-hidden sm:rounded-md">
       <div className="px-4 py-5 bg-white sm:p-6">
@@ -121,8 +120,7 @@ export function AccountBox (props) {
 function Account() {
   let Customer = useCustomer()
   let page = window.location.pathname.split('/')[1]
-  console.log(page)
-  console.log(Customer)
+
   return (
     <div className>
       <div className="">
@@ -151,7 +149,6 @@ function Account() {
                        Pincode : e.target[6].value,
                        City : e.target[7].value ,
                    }
-                   console.log(Article)
                    axios.put('/api/updateCustomer/'+Customer._id,Article).then(()=>{
                      alert('Succesful')
                    })
@@ -177,7 +174,6 @@ function Account() {
                        City : e.target[7].value ,
                        Password : e.target[8].value,
                    }
-                   console.log(Article)
                    axios.post('/api/create/Customer',Article).then(()=>{
                      alert('Succesful')
                    })

@@ -1,7 +1,6 @@
 import axios from 'axios'
 import React from 'react'
 import LoginForm from '../../Public/Components/LoginForm'
-import { useSellerData } from '../../Theme1/Contexts/SellerContext'
 
 function Login(props) {
     return (
@@ -9,7 +8,6 @@ function Login(props) {
             <form className="mt-8 space-y-6" onSubmit={
                 e=>{
                     e.preventDefault()
-                    console.log(e.target[1].value)
                     let creds;
                     if(props.domain) {
                          creds = {

@@ -12,8 +12,6 @@ import { useSellerData } from './Contexts/SellerContext';
 import CatMenu from './Components/CategoryMenu'
 import Footer from './Components/Footer'
 import Navbar from './Components/Navbar'
-import { useToken } from '../Admin-S/Contexts/token';
-import Login from '../Components/Login';
 function Main(props) {
     const SellerData = useSellerData()
     useEffect(() => {
@@ -21,7 +19,6 @@ function Main(props) {
           
         }
     }, [])
-    let token= useToken()
     return (
         (Object.keys(SellerData).length>0) ? 
         <>

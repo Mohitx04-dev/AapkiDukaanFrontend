@@ -1,13 +1,9 @@
-import {React, useState} from 'react'
+import {React} from 'react'
 import CatMenuV from '../CategoryMenu/vertical'
-import { Rating } from 'react-simple-star-rating'
-import Slider, { Range } from 'rc-slider';
 import 'rc-slider/assets/index.css';
-import Textfield from '../FormComponents/textfield';
 
 function SideElements(props) {
  
-    let value = [props.StartV,props.EndV]
     return (
         <div>
         <CatMenuV title="Categories" />

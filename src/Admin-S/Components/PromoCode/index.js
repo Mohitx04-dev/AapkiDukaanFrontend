@@ -1,9 +1,7 @@
 import React, { useEffect,useState } from 'react'
-import Table,{UnivTable} from '../../../Components/Table'
-import { JsonToTable } from "react-json-to-table";
+import {UnivTable} from '../../../Components/Table'
 import axios from 'axios';
 import {
-    useSellerData,
     useSellerId,
   } from "../../../Theme1/Contexts/SellerContext"
 import { Link } from 'react-router-dom';
@@ -19,8 +17,8 @@ function PromoCode() {
        axios.get("/api/GetPromoCode/"+Sid,{headers: headers}).then(data=>{
            setPromoCode(data.data)
            setisLoading(false)
-
        })
+                  // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     const Delete = (row) =>{
         axios.put("/api/DeletePromo/"+Sid,{id : row._id},{headers: headers}).then(()=>{

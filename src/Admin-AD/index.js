@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import {Route, Routes } from 'react-router-dom';
 import Sidebar from "../Components/Sidebar";
 import Customers from "../Components/Customers";
 import Bills from '../Components/Bills'
@@ -6,7 +6,6 @@ import Inventory from "../Components/Inventory";
 import Login from '../Components/Login';
 import TabsTable from '../Components/TabsTable';
 import AddProduct from '../Components/AddProduct';
-import SellerDataProvider, { useSellerData, useSellerId } from '../Theme1/Contexts/SellerContext';
 import Client from '../Components/Clients';
 import ProductPool from '../Components/AdminProductPool/indexcopy';
 import TokenProvider from '../Admin-S/Contexts/token';

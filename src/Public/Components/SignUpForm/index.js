@@ -11,7 +11,7 @@ function StepIcon(props) {
     <div className="flex items-center text-teal-600 relative">
       <div
         className={
-          props.Step == props.step
+          props.Step === props.step
             ? " bg-lightgreen text-white " + classes
             : null + classes
         }
@@ -23,9 +23,9 @@ function StepIcon(props) {
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
           className="feather feather-bookmark "
         >
           <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
@@ -50,7 +50,7 @@ function TextFieldForm(props) {
             name={props.name}
             defaultValue={props.Form[name]}
             onChange={props.handleChange}
-            class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
+            className="p-1 px-2 appearance-none outline-none w-full text-gray-800"
           />{" "}
         </div>
       </div>
@@ -161,12 +161,12 @@ export function Settings(props) {
   const setColor = (e)=>{
     props.setForm({
       ...props.Form,
+       // eslint-disable-next-line no-useless-computed-key
       ["Color"]: e,
     });
-    console.log(props.Form)
   }
     return (
-        <div class="flex lg:flex-row flex-col justify-evenly">
+        <div className="flex lg:flex-row flex-col justify-evenly">
        <div className="flex-col p-2 m-2">
         <div className="flex flex-col md:flex-row ">
           <TextFieldForm
@@ -200,9 +200,9 @@ export function Settings(props) {
                   onChange={(newTags) => {
                     props.setForm({
                       ...props.Form,
+                       // eslint-disable-next-line no-useless-computed-key
                       ["Categories"]:newTags,
                     });
-                    console.log(props.Form.Categories)
                   }
                   }
                />
@@ -236,8 +236,8 @@ function Page(props) {
    
     const handleChange = (e) => {
       e.preventDefault();
-      if(e.target.name=='ConfirmPassword' || e.target.name=='Password') {
-         if( e.target.value==props.Form.Password){
+      if(e.target.name==='ConfirmPassword' || e.target.name==='Password') {
+         if( e.target.value===props.Form.Password){
              props.setMatch(1)
          }
          else {
@@ -293,7 +293,6 @@ function SignUpForm() {
       const root = document.documentElement;
       root.style.setProperty('--themeColor', Form.Color);
     }, [Form])
-    console.log(Form.Categories)
     const [Match, setMatch] = useState(0) 
 
 
@@ -305,7 +304,6 @@ function SignUpForm() {
     Step > 1 ? setStep((Step) => Step - 1) : setStep(Step);
   }
   function submit() {
-      console.log(Form)
       axios.post('/api/create/Seller',Form).then((data)=>{
         alert('You are being redirected to your website')
         // window.location.href = Form.title+'localhost:3000'
@@ -318,8 +316,6 @@ if(e.response){
   }
   let ButtonClasses =
     " text-base hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-gray-200 bg-gray-100 text-gray-700 border duration-200 ease-in-out border-gray-600 transition";
-  let classes =
-    " rounded-full transition duration-500 ease-in-out h-12 w-12 py-3 border-2 border-teal-600";
   return (
     <div className=" bg-white max-w-full m-10 font-reemKufi">
       <div className="p-5">
@@ -346,9 +342,9 @@ if(e.response){
             </button>
             <div className="flex-auto flex flex-row-reverse">
               <button
-                disabled={(Step==2 && Match==0) ?  true : false}
+                disabled={(Step===2 && Match===0) ?  true : false}
                 className={Step > 2 ? " hidden " : 
-                (Step==2 && Match==0) ?  " opacity-25 " + ButtonClasses  : ButtonClasses }
+                (Step===2 && Match===0) ?  " opacity-25 " + ButtonClasses  : ButtonClasses }
                 onClick={(e) => {
                   e.preventDefault();
                   addStep();

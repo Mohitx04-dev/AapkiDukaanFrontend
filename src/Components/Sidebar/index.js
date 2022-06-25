@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const NavItem = ({ navItem }) => {
-  const pathname = window.location.pathname;
   return (
     <li className="px-4  py-2.5 whitespace-nowrap  flex items-centre cursor-pointer  ">
       <Link className="nav-link" to={`${navItem.link}`}>

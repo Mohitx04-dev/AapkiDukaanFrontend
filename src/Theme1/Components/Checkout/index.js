@@ -1,11 +1,8 @@
 import React, { useState } from "react";
-import Account, { AccountBox } from "../Account";
-import Cart from "../Cart";
-import { XIcon } from "@heroicons/react/outline";
+import Account from "../Account";
 import {
   useCart,
   useCartUpdate,
-  useCartOpen,
 } from "../../Contexts/CartContext";
 import { Link } from "react-router-dom";
 import Textfield from "../FormComponents/textfield";
@@ -45,7 +42,6 @@ function Checkout() {
                     <div className=" overflow-hidden">
                       <div className="flow-root">
                         <ul
-                          role="list"
                           className="-my-6 divide-y divide-gray-200"
                         >
                           {products.map((product) => (
@@ -56,6 +52,7 @@ function Checkout() {
                                     "http://localhost:5000/image/" +
                                     product.Photo
                                   }
+                                  alt={product.Name}
                                   className="w-full h-full object-center object-cover"
                                 />
                               </div>
@@ -77,7 +74,6 @@ function Checkout() {
                                       type="button"
                                       onClick={(e) => {
                                         e.preventDefault();
-                                        console.log(product.id);
                                         RemoveProduct(product.id);
                                       }}
                                       className="font-medium text-indigo-600 hover:text-indigo-500"
@@ -125,13 +121,11 @@ function Checkout() {
                               Code : Promo,
                               Total : total
                             }).then((data)=>{
-                                console.log(data.data)
                                 setTotal(data.data.NewTotal)
                                 setApplied(true)
                             }).catch(e=>{
                               alert('Invalid Promo Code')
                             })
-                            console.log(Promo);
                           }}
                           className=" bg-theme mx-2  border rounded-lg text-white p-2 ">
                           Apply
@@ -162,7 +156,6 @@ function Checkout() {
                           }
                           return productIds.push(x)
                         })
-                        console.log(productIds)
                         let Article = {
                           Sid : id,
                           Total : Total,
@@ -171,10 +164,8 @@ function Checkout() {
                           Type : 'COD',
                           
                         }
-                        console.log(Article)
                         axios.put('api/PlaceOrder',Article).then((data)=>{
                           alert('Order Placed')
-                          console.log(data)
                           window.location.pathname = '/order/'+data.data._id
                         }).catch(e=>{
                           console.log(e)

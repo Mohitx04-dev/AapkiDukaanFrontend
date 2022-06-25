@@ -1,11 +1,9 @@
-import {React, useState} from 'react'
+import {React} from 'react'
 import { Link } from 'react-router-dom'
-import { Rating } from 'react-simple-star-rating'
 import { useCartUpdate } from '../../Contexts/CartContext'
 
 function ProductCardH(props) {
   const AddProduct = useCartUpdate().AddProduct
-  console.log(props.product)
     return (
         <div className="border-2 border-searchBarGrey rounded-lg m-2 p-2 w-full">
         <div className="h-50">
@@ -14,6 +12,7 @@ function ProductCardH(props) {
         <img
             src={'http://localhost:5000/image/'+props.product.Photo}
             className="w-100 max-h-full object-contain"
+            alt={props.product.Name}
           />
           </Link>
         <div className="mt-2 mx-3 text-left justify-between">

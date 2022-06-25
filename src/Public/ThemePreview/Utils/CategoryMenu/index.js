@@ -5,7 +5,7 @@ function CatMenu(props) {
         <div className="flex flex-row justify-evenly mt-10 mb-10 bg-searchBarGrey">
             {props.Arr.map(el=>{
                 return (
-                    <Link className="text-themeColor  hover:bg-searchBarGrey rounded-md p-2" to="#">{el}</Link>
+                    <Link className="text-themeColor  hover:bg-searchBarGrey rounded-md p-2" to="#" key={el}>{el}</Link>
                 )
             })}
         </div>

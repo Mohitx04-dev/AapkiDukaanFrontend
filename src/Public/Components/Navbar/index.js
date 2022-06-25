@@ -21,7 +21,7 @@ function Menu() {
       }
     ].map((el) => {
       return (
-        <Link className=" p-4" to={"/" + el.url}>
+        <Link className=" p-4" to={"/" + el.url} key={el.text}>
           {el.text}
         </Link>
       );
@@ -34,10 +34,10 @@ function Navbar() {
   return (
     <div className="flex flex-row bg-NavbarBg text-white font-reemKufi">
       <Link to="/">
-      <p className="text-3xl m-3 pd-2 ml-10 mr-10  font-heading flex flex-row ">
+      <div className="text-3xl m-3 pd-2 ml-10 mr-10  font-heading flex flex-row ">
         <h1 className="text-white mr-1">Aapki </h1>
         <h1 className="text-LogoText">Dukaan </h1>{" "}
-      </p>
+      </div>
       </Link>
       <div className="m-3 p-2 ">
       <Menu />
@@ -56,7 +56,7 @@ function Navbar() {
           },
         ].map((el) => {
           return (
-            <Link className={"p-2 " + (el.bg ?" bg-lightgreen rounded-full" : null) } to={"/" + el.url}>
+            <Link className={"p-2 " + (el.bg ?" bg-lightgreen rounded-full" : null) } to={"/" + el.url} key={el.text}>
               {el.text}
             </Link>
           );

@@ -21,18 +21,17 @@ function SellerDataProvider({children}) {
     const [SellerData,setSellerData] = useState({})
     const [SellerId,setSellerId] = useState("")
     const [isLoading, setLoading] = useState(true);
-    console.log(subDomain)
     function getData() {
         axios.get('/api/findSellerbyDomain/'+subDomain)
           .then(response => {
             setSellerData(response.data.Website)
             setSellerId(response.data._id)
-            console.log(response.data)
             setLoading(false)
           });
         }
         useEffect(() => {
             getData();       
+             // eslint-disable-next-line react-hooks/exhaustive-deps
         }, [])
         useEffect(() => {
             const root = document.documentElement;

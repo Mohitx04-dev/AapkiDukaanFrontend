@@ -1,6 +1,5 @@
-import React, {useState} from 'react'
+import React from 'react'
 import { Tab } from '@headlessui/react'
-import { JsonToTable } from 'react-json-to-table'
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
   }
@@ -37,7 +36,6 @@ function TabsTable(props) {
                     'focus:outline-none focus:ring-2 ring-offset-2 ring-offset-blue-400 ring-white ring-opacity-60'
                   )}
                 >
-                      <JsonToTable json={posts} />
                 </Tab.Panel>
               ))}
             </Tab.Panels>
