@@ -12,11 +12,16 @@ function CategoryPage() {
     useEffect(() => {
         axios.put('/api/findProductsbyCategory/'+Sid,{"Category":id}).then((data)=>{
             setProducts(data.data)
+        }).catch(e=>{
+            setProducts([])
         })
-    },[])
+    },[id])
     const [StartV, setStartV] = useState(0)
     const [EndV, setEndV] = useState(20000)
     return (
+        Products.length<1 ? <>
+        No Products Found
+        </> : 
         <>
         <h2 className="text-4xl text-left font-bold">{id}</h2>
         <div className="flex flex-row ">
@@ -32,3 +37,4 @@ function CategoryPage() {
 }
 
 export default CategoryPage
+ 

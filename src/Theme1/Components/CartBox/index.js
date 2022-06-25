@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import ProductCard from '../ProductCard'
 
 function CartBox(props) {
   let products = props.products
@@ -24,7 +25,7 @@ function CartBox(props) {
                                   <h3>
                                     <Link to={product._id}>{product.Name}</Link>
                                   </h3>
-                                  <p className="ml-4">{product.Price * product.quantity}</p>
+                                  <p className="ml-4">{product.Price } * {product.quantity} =  {product.Price * product.quantity}</p>
                                 </div>
                               </div>
                             </div>

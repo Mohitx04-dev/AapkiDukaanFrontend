@@ -18,7 +18,7 @@ function Checkout() {
   const CartUpdate = useCartUpdate();
   let total = 0;
   products.forEach((element) => {
-    total += parseInt(element.Price);
+    total += parseInt(element.Price * element.quantity);
     // setTotal(total)
   });
   const [Total, setTotal] = useState(total)
@@ -68,7 +68,7 @@ function Checkout() {
                                         {product.Name}
                                       </Link>
                                     </h3>
-                                    <p className="ml-4">{product.Price}</p>
+                                    <p className="ml-4">{product.Price * product.quantity} </p>
                                   </div>
                                 </div>
                                 <div className="flex-1 flex items-end justify-between text-sm">
@@ -155,8 +155,12 @@ function Checkout() {
                         e.preventDefault()
                          
                         let productIds = [];
-                         products.map(el=>{
-                          return productIds.push(el._id)
+                        products.map(el=>{
+                          let x = {
+                            "Product" : el._id,
+                            "Quantity" : el.quantity
+                          }
+                          return productIds.push(x)
                         })
                         console.log(productIds)
                         let Article = {

@@ -22,8 +22,21 @@ function CartProvider({children}) {
     ])
     const [open, setOpen] = useState(false)
     function AddProduct(item) {
-        setCart(old => [...old,item]);
+        console.log(item)
+        let x = 0;
+        const Product = Cart.find(el=> {
+            return (el._id==item._id) ;
+        })
+        if(Product){
+            Product["quantity"]+=item["quantity"];
+            console.log(Product["quantity"]);
+        }
+        else{
+            setCart(old => [...old,item]);
+        }
         setOpen(true)
+      
+
     }
     const RemoveProduct = (o) => {
         console.log(o)

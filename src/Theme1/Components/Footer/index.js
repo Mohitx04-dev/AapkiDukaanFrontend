@@ -39,7 +39,7 @@ function Footer(props) {
             <Column  Arr={FooterArr[2]}  title={"Earnings"} />
             <Column  Arr={FooterArr[3]}  title={"Account"} />
         </div>
-        <p className="text-sm">Copyright © 2021 aapkidukaan.app | powered by Aapki Dukaan</p>
+        <p className="text-sm">Copyright © 2022 aapkidukaan.app | powered by Aapki Dukaan</p>
         </div>
     )
 }

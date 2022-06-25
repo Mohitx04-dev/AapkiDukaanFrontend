@@ -8,7 +8,7 @@ function CatMenuV(props) {
         <span className="text-2xl">{props.title}</span>
             {Categories.map(el=>{
                 return (
-                    <Link className="hover:bg-searchBarGrey text-theme rounded-md p-1 underline" to={'category/'+el}>{el}</Link>
+                    <Link className="hover:bg-searchBarGrey text-theme rounded-md p-1 underline" to={'/Category/'+el}>{el}</Link>
                 )
             })}
         </div>

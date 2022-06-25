@@ -16,8 +16,10 @@ function Success(props) {
             console.log(data.data)
             setOrder(data.data)
             data.data.Products.forEach(element => {
-                axios.get('/api/getFullProduct/'+sid+'/'+element).then ((d)=>{
-                    setProducts(Products => [...Products,d.data])
+                axios.get('/api/getFullProduct/'+sid+'/'+element.Product).then ((d)=>{
+                    const P = Object.create(d.data)
+                    P["quantity"] = element.Quantity
+                    setProducts(Products => [...Products,P])
                   })
             });
         })

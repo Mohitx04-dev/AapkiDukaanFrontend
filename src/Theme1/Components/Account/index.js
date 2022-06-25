@@ -154,7 +154,6 @@ function Account() {
                    console.log(Article)
                    axios.put('/api/updateCustomer/'+Customer._id,Article).then(()=>{
                      alert('Succesful')
-                     window.location.reload()
                    })
                   }
              }>
@@ -181,7 +180,6 @@ function Account() {
                    console.log(Article)
                    axios.post('/api/create/Customer',Article).then(()=>{
                      alert('Succesful')
-                     window.location.reload()
                    })
                   }
              }>
