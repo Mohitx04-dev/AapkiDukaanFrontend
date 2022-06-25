@@ -7,7 +7,7 @@ function CatMenu(props) {
         <div className="flex flex-row justify-evenly mt-10 mb-10 bg-searchBarGrey">
             {Categories.map(el=>{
                 return (
-                    <Link className="hover:bg-searchBarGrey rounded-md p-2 text-theme" to={el}>{el}</Link>
+                    <Link className="hover:bg-searchBarGrey rounded-md p-2 text-theme" to={"Category/"+el}>{el}</Link>
                 )
             })}
         </div>
