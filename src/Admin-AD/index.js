@@ -38,6 +38,7 @@ function AdminAD() {
       link: "Logout",
       text: "Logout",
     },
+  
   ]
   let User = localStorage.getItem('User')
   return (

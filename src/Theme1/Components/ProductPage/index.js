@@ -103,10 +103,12 @@ export default function ProductPage() {
                     type="submit"
                     onClick={(e) => {
                       e.preventDefault();
-                      for (let i = 0; i < qty; ++i) {
+                      // for (let i = 0; i < qty; ++i) {
                         console.log("trying");
+                        product["quantity"] = qty;
+                        console.log(product)
                         CartUpdate.AddProduct(product);
-                      }
+                      // }
                     }}
                     className="mt-10 w-full bg-theme text-w border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                   >

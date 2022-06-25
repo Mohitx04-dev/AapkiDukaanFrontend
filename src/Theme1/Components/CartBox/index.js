@@ -24,7 +24,7 @@ function CartBox(props) {
                                   <h3>
                                     <Link to={product._id}>{product.Name}</Link>
                                   </h3>
-                                  <p className="ml-4">{product.Price}</p>
+                                  <p className="ml-4">{product.Price * product.quantity}</p>
                                 </div>
                               </div>
                             </div>

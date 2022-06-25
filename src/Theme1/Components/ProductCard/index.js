@@ -38,12 +38,13 @@ function ProductCard(props) {
             </h3>
             
             <div className="flex flex-row justify-between">
-            <p className="text-sm font-medium text-gray-900 py-2 px-4 ">{product.Price}</p>
+            <p className="text-sm font-medium text-gray-900 py-2 px-4 ">{product.Price} ₹</p>
             <button
                 type="submit"
                 className="group relative justify-center bg-theme text-w py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                 onClick={e=>{
                     e.preventDefault()
+                    product["quantity"] = 1;
                     AddProduct(product)
                 }}
               > Add to Cart

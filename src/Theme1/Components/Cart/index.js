@@ -10,7 +10,7 @@ function CartBox (props) {
     const CartOpen = useCartOpen()
     let total=0;
     products.forEach(element => {
-        total+=parseInt(element.Price)
+        total+=parseInt(element.Price * element.quantity)
     });
     const AddProduct = CartUpdate.AddProduct
     const RemoveProduct = CartUpdate.RemoveProduct
@@ -61,7 +61,8 @@ function CartBox (props) {
                                   <h3>
                                     <Link to={product._id}>{product.Name}</Link>
                                   </h3>
-                                  <p className="ml-4">{product.Price}</p>
+                                  <p className="ml-4">{product.Price} ₹</p>
+                                  <p className="ml-4">Quantity = 1 * {product.quantity}</p>
                                 </div>
                               </div>
                               <div className="flex-1 flex items-end justify-between text-sm">
