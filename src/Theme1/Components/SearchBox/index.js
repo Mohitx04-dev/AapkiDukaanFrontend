@@ -1,15 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useSellerData } from '../../Contexts/SellerContext'
 import Dropdown from '../Dropdown'
 
 function SearchBox() {
   let {Categories} = useSellerData()
+  const [Keyword, setKeyword] = useState("")
+  const OnChange = e=> {
+    setKeyword(e.target.value)
+  }
     return (
         <div class="flex mt-1 text-w border text-2xl border-searchBarGrey rounded-lg ">
-          <Dropdown Arr={Categories}/>
+          <Dropdown Arr={Categories} Title = "Categories" Link="Category"/>
           |
         <input class=" mx-5 text-sm focus:outline-none "
-          type="search" name="Search " placeholder="Search Products, Categories" />
+          type="search" name="Search " value={Keyword} onChange={OnChange} placeholder="Search Products, Categories" />
         <button type="submit" class="mr-2">
           <svg class="text-gray-600 h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px"
             viewBox="0 0 56.966 56.966" xmlSpace="preserve"

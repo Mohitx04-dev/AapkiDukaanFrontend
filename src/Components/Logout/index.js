@@ -1,10 +1,10 @@
 import React from 'react'
 
-function Logout() {
-    if(localStorage.getItem('User')) {
-        localStorage.removeItem('User')
+function Logout(props) {
+    if(localStorage.getItem(props.Role)) {
+        localStorage.removeItem(props.Role)
         alert('Logged Out')
-        window.location.reload()
+        window.location.href = '/'
     }
     return (
         <div>

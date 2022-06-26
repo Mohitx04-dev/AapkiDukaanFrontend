@@ -6,6 +6,8 @@ import Logo from "../Logo";
 import SearchBox from "../SearchBox";
 import { useCart, useCartOpen } from "../../Contexts/CartContext";
 import { useSellerData } from "../../Contexts/SellerContext";
+import { useCustomer } from "../../Contexts/CustomerContext";
+import Dropdown from "../Dropdown";
 function Topbar() {
     let {Sphone, Semail} =  useSellerData()
     return (
@@ -31,6 +33,11 @@ function Topbar() {
 }
 function Navbar(props) {
   const setOpen = useCartOpen().setOpen
+  let Customer = useCustomer()
+  const Arr = [
+    'Account',
+    'Logout'
+  ]
   return (
       <>
     <div className="flex flex-col justify-between m-2 mx-8 md:flex-row">
@@ -45,14 +52,13 @@ function Navbar(props) {
         <Logo Seller={"Seller"}/>
         </div>
         <div className="mx-5">
-        <SearchBox Arr={props.Arr}/>
+        {/* <SearchBox Arr={props.Arr}/> */}
         </div>
       </div>
         <div className="flex flex-row">
-          <div className="mx-5 pt-3">
-          <Link to="/account"> <UserIcon />  </Link>
-          </div>
-          <div className="mx-5 pt-3">
+         
+          {!Customer ? <div className="mx-5 pt-2"> <Link to="/account"> <UserIcon />  </Link> </div> : <div className="mx-5 pt-0"> <Dropdown  Arr={Arr} Title={<UserIcon /> } Link=""/> </div>}
+          <div className="mx-5 pt-2">
           <button class="px-1 relative border-transparent text-gray-800 rounded-full hover:text-gray-400 focus:outline-none focus:text-gray-500 transition duration-150 ease-in-out" aria-label="Cart" onClick={
             (e) => {
               e.preventDefault()

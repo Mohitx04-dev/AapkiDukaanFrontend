@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import {Route, Routes } from 'react-router-dom';
 import E404 from './Components/404';
 import Account from './Components/Account';
@@ -12,13 +12,9 @@ import { useSellerData } from './Contexts/SellerContext';
 import CatMenu from './Components/CategoryMenu'
 import Footer from './Components/Footer'
 import Navbar from './Components/Navbar'
+import Logout from '../Components/Logout';
 function Main(props) {
     const SellerData = useSellerData()
-    useEffect(() => {
-        return () => {
-          
-        }
-    }, [])
     return (
         (Object.keys(SellerData).length>0) ? 
         <>
@@ -33,6 +29,7 @@ function Main(props) {
         <Route  path="Checkout" element={<Checkout/>} ></Route>
         <Route  path="Order/:id" element={<Success/>} ></Route>
         <Route  path="OrderHistory" element={<OrderHistory/>} ></Route>
+        <Route  path="Logout" element={<Logout Role="Customer"/>} ></Route>
         </Routes> 
         </div>
             <Footer title="Foot" />
