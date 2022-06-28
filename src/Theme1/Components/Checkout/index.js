@@ -152,7 +152,8 @@ function Checkout() {
                         products.map(el=>{
                           let x = {
                             "Product" : el._id,
-                            "Quantity" : el.quantity
+                            "Quantity" : el.quantity,
+                            "Price" : el.Price
                           }
                           return productIds.push(x)
                         })

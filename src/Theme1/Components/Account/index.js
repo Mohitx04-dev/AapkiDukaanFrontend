@@ -188,9 +188,10 @@ function Account() {
       </div>
               
       </div>
-      {/* <div className="mt-10">
-      <OrderHistory />
-      </div> */}
+     {/* { Customer ?  <div className="mt-10">
+       
+       <OrderHistory />
+       </div> : null } */}
     </div>
   );
 }

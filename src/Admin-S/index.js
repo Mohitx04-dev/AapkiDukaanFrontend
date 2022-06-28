@@ -13,6 +13,7 @@ import SellerDataProvider, { useSellerId } from '../Theme1/Contexts/SellerContex
 import PromoCode from './Components/PromoCode';
 import AddPromoCode from './Components/AddPromo';
 import Logout from '../Components/Logout';
+import SingleOrder from '../Components/SingleProduct';
 function AdminS() {
   const Menu = [
    
@@ -37,6 +38,10 @@ function AdminS() {
       text: "Settings",
     },
     {
+      link: "customers",
+      text: "Customers",
+    },
+    {
       link: "Logout",
       text: "Logout",
     },
@@ -48,13 +53,12 @@ function AdminS() {
   var sub = parts[0]
   return (
  
-    <div className="App">
+    <div className="App bg-NavbarBg font-Roboto text-xl">
          <SellerDataProvider>
         <div className="p-0 m-0 flex">
           <Sidebar Menu={Menu}/>
           <TokenProvider>
-          <div className="m-10 p-2">
-            Welcome User, Proceed to use the Admin Panel
+          <div className="m-20 bg-white w-full rounded-xl ">
           {
               User ? 
               <Routes>
@@ -68,6 +72,7 @@ function AdminS() {
               <Route exact path="promocode" element={<PromoCode />}  ></Route>
               <Route exact path="logout" element={<Logout />}  ></Route>
               <Route exact path="settings" element={<WebsiteSettings id={Sid}/>}  ></Route>
+              <Route exact path="sales/:id" element={<SingleOrder />}  ></Route>
               </Routes> : <Routes>
               <Route path="/*" element={<Login role="Seller" domain={sub}/>}  ></Route>  
                 </Routes>

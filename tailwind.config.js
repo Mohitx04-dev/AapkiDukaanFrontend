@@ -1,5 +1,5 @@
 module.exports = {
-  purge: [],
+  content: ['./src/**/*.{js,ts,jsx,tsx}'],
   darkMode: false, // or 'media' or 'class'
   theme: {
     fontFamily:{
@@ -7,7 +7,8 @@ module.exports = {
       theme:['"Poppins"'],
       'reemKufi':[' "Reem Kufi" '],
       'heading':['"Righteous"'],
-      'Arial' : ["Arial"]
+      'Arial' : ["Arial"],
+      'Roboto' : ["Roboto"]
     },
     colors:{
       searchBarGrey : "#F9F9F9",
@@ -25,14 +26,16 @@ module.exports = {
       "AdminGrey" : "#EFEFEF",
       darkGrey : "#4E4E53",
       white: "#FFF",
+      WbgGrey: "#EBEBEB",
       "themeColor" : "var(--themeColor)",
-      "demo" : "var(--demo)"
+      "demo" : "var(--demo)",
     },
     textColor: {
-      
+      navBartext : "#CDCDCD",
       white: "#FFF", 
       black: "#000",
       LogoText : "#08AC44",
+      GrayText :"#7B7878",
       "themeColor" : "var(--themeColor)",
       "theme" : "var(--theme)"
     },

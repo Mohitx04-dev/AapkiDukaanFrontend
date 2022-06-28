@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useSellerId } from "../../Theme1/Contexts/SellerContext";
 import axios from "axios";
 import { useToken } from "../../Admin-S/Contexts/token";
+import Wproduct from "../Widgets/Product";
 function Inventory() {
   let Sid = useSellerId();
   const [isLoading, setisLoading] = useState(true);
@@ -28,14 +29,22 @@ function Inventory() {
     return <div>Loading</div>;
   } else {
     return (
-        <div className="w-full  m-10">
-        <h1 className="text-3xl m-4 text-left">Products</h1>
-        <div className="flex flex-row justify-evenly">
-            <div>
-            <UnivTable Responses={Products} Delete={Delete} />
-            </div>
-        <Link to="add" className=" max-h-10 p-2 rounded-lg bg-lightgreen" >Add +</Link> 
+        <div className="m-10">
+        <div className="flex flex-row mt-10">
+        <h1 className="text-3xl text-left flex-auto">Products</h1>
+        <div className=" flex-auto ">
+        <Link to="add" className=" max-h-10 p-2 rounded-lg bg-lightgreen text-white" >Add +</Link> 
         </div>
+          </div>
+            {/* <UnivTable Responses={Products} Delete={Delete} /> */}
+            {
+              Products.map(element => {
+               return <Wproduct Product={element} Type={1}/>
+              })
+              // Products.foreach(el=>{
+              //   <Wcustomer Product={el}/>
+              // })
+            }
     </div>
     );
   }
