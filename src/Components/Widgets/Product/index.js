@@ -23,6 +23,10 @@ function Wproduct(props) {
   const Box1 = ()=>{
     return (
         <div className="flex flex-row"> 
+         <div className="flex flex-col m-3 text-justify">
+            <p className="text-GrayText text-sm">Category</p>
+            <p>{props.Product.Category}</p>
+        </div>
         <div className="flex">
             <div className=" flex flex-col m-3 text-justify" >
               <p className="text-GrayText text-sm"> Price</p>

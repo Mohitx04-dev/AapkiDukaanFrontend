@@ -157,7 +157,7 @@ function Account() {
                 <AccountBox Customer ={Customer} save={true}/>
                 </form>
                
-                {  page==='account' ? <OrderHistory /> : null}
+                {  page==='Account' ? <OrderHistory /> : null}
                
                 </>
                 :  <form onSubmit={

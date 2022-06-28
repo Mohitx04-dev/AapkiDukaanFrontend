@@ -34,9 +34,9 @@ function Worder(props) {
 <p > 
     
         {props.Order.Status===1 ? 
-            "Pending"
+            "Order Placed"
         :  props.Order.Status===2 ?
-                 "Order Place"
+                 "Processed"
         :  props.Order.Status===3 ?
                  "Delivered"
         : null}
