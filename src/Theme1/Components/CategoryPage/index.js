@@ -29,7 +29,7 @@ function CategoryPage() {
             <SideElements StartV={StartV} EndV={EndV} setStartV={setStartV} setEndV={setEndV}/>
             <div className="mx-10 grid grid-cols-1 w-full">
             {Products.map(el=>{
-               return <ProductCardH product={el} key={el}/>
+              if(el.InStock) return <ProductCardH product={el} key={el}/>
             })}
             </div>
         </div>

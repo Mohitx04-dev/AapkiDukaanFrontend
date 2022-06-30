@@ -21,7 +21,7 @@ function Row(props) {
         {/* <Link to="#"><p className="text-left m-3 mx-9 font-bold">More Products {'>'} </p> </Link> */}
         </div>
         {Products.map(el=>{
-            return <ProductCard pid={el._id} key={el._id}/>  
+            if(el.InStock) return <ProductCard pid={el._id} key={el._id}/>  
         })
         
         }

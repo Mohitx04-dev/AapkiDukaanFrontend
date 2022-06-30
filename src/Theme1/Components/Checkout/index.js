@@ -150,12 +150,14 @@ function Checkout() {
                          
                         let productIds = [];
                         products.map(el=>{
+                          if(el.InStock){
                           let x = {
                             "Product" : el._id,
                             "Quantity" : el.quantity,
                             "Price" : el.Price
                           }
                           return productIds.push(x)
+                         }
                         })
                         let Article = {
                           Sid : id,
