@@ -22,26 +22,26 @@ function Wproduct(props) {
   }
   const Box1 = ()=>{
     return (
-        <div className="flex flex-row"> 
-         <div className="flex flex-col m-3 text-justify">
-            <p className="text-GrayText text-sm">Category</p>
-            <p>{props.Product.Category}</p>
-        </div>
-        <div className="flex">
-            <div className=" flex flex-col m-3 text-justify" >
-              <p className="text-GrayText text-sm"> Price</p>
-              <p >{Product.Price} </p>
-            </div>
-              
-        </div>
-        <div className="flex flex-col m-3 text-justify">
-            <p className="text-GrayText text-sm">In Stock?</p>
-            <p>{props.Product.InStock ? "Yes" : "No"}</p>
-        </div>
-        <div className="flex">
-        <Link to="#" className="p-3 m-3 max-h-12 bg-NavbarBg text-white rounded-xl" >Modify </Link> 
-        </div>
-        </div>
+      <div className="flex flex-row"> 
+      <div className="flex flex-col m-3 text-justify">
+         <p className="text-GrayText text-sm">Category</p>
+         <p>{props.Product.Category}</p>
+     </div>
+     <div className="flex">
+         <div className=" flex flex-col m-3 text-justify" >
+           <p className="text-GrayText text-sm"> Price</p>
+           <p >{Product.Price} </p>
+         </div>
+           
+     </div>
+     <div className="flex flex-col m-3 text-justify">
+         <p className="text-GrayText text-sm">In Stock?</p>
+         <p>{props.Product.InStock ? "Yes" : "No"}</p>
+     </div>
+     <div className="flex">
+     <Link to={"/admin/modifyProduct/"+props.Product._id} className="p-3 m-3 max-h-12 bg-NavbarBg text-white rounded-xl" >Modify </Link> 
+     </div>
+     </div>
     )
   }
   const Box2 = ()=>{
@@ -66,7 +66,7 @@ function Wproduct(props) {
   }
   return (
     <div className={" bg-WbgGrey rounded-xl " + (props.Type===1 ? " m-5 " : " mx-5 ")}>
-        <div className="flex flex-row  justify-between">
+        <div className="flex flex-row  justify-between  ">
             <div className="flex m-2 ">
                 <div className="flex flex row">
                     <div className="mx-10 flex">

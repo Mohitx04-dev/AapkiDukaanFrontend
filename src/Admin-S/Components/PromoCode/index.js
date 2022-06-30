@@ -6,6 +6,7 @@ import {
   } from "../../../Theme1/Contexts/SellerContext"
 import { Link } from 'react-router-dom';
 import { useToken } from '../../Contexts/token';
+import Wcoupon from '../../../Components/Widgets/Coupons';
 function PromoCode() {
     let Sid=useSellerId()
     const [isLoading, setisLoading] = useState(true)
@@ -21,7 +22,8 @@ function PromoCode() {
                   // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     const Delete = (row) =>{
-        axios.put("/api/DeletePromo/"+Sid,{id : row._id},{headers: headers}).then(()=>{
+        axios.put("/api/DeletePromo/"+Sid,{id : row},{headers: headers}).then((data)=>{
+            console.log(data)
             alert('Delete Successly')
             window.location.reload()
         })
@@ -31,20 +33,25 @@ function PromoCode() {
             <div>Loading</div>
         )
     }
-    else {
     return (
 
-        <div className="w-full  m-10">
-        <h1 className="text-3xl m-4 text-left">PromoCode</h1>
-        <div className="flex flex-row justify-evenly">
-            <div>
-            <UnivTable Responses={PromoCode} Delete={Delete}/>  
-            </div>
-        <Link to="add" className=" max-h-10 p-2 rounded-lg bg-lightgreen" >Add +</Link> 
+        <div className="m-10 ">
+            <div className='flex flex-row'>
+        <h1 className="text-3xl m-4 text-left flex-auto">PromoCode</h1>
+        <div className='flex-auto m-4 '>
+        <Link to="add" className=" max-h-10 text-white p-2 rounded-lg bg-NavbarBg " >Add +</Link>
         </div>
+        </div>
+        <div>
+     {PromoCode.map((el)=>{
+         return <Wcoupon Coupon={el} Delete={Delete}/>
+     })}
+     </div> 
+           
     </div>
+     
     )
 }
-}
+
 
 export default PromoCode

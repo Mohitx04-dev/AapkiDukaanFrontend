@@ -27,6 +27,7 @@ module.exports = {
       darkGrey : "#4E4E53",
       white: "#FFF",
       WbgGrey: "#EBEBEB",
+      Removebg : "#C70B0B",
       "themeColor" : "var(--themeColor)",
       "demo" : "var(--demo)",
     },

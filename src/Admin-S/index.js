@@ -14,6 +14,7 @@ import PromoCode from './Components/PromoCode';
 import AddPromoCode from './Components/AddPromo';
 import Logout from '../Components/Logout';
 import SingleOrder from '../Components/SingleProduct';
+import ModifyProduct from '../Components/ModifyProduct';
 function AdminS() {
   const Menu = [
    
@@ -37,10 +38,7 @@ function AdminS() {
       link: "settings",
       text: "Settings",
     },
-    {
-      link: "customers",
-      text: "Customers",
-    },
+   
     {
       link: "Logout",
       text: "Logout",
@@ -70,9 +68,10 @@ function AdminS() {
               <Route exact path="test" element={<TabsTable />}  ></Route>
               <Route exact path="PromoCode/add" element={<AddPromoCode/>}  ></Route>
               <Route exact path="promocode" element={<PromoCode />}  ></Route>
-              <Route exact path="logout" element={<Logout />}  ></Route>
+              <Route exact path="logout" element={<Logout Role={"Seller"}/>}  ></Route>
               <Route exact path="settings" element={<WebsiteSettings id={Sid}/>}  ></Route>
               <Route exact path="sales/:id" element={<SingleOrder />}  ></Route>
+              <Route exact path="modifyProduct/:id" element={<ModifyProduct />}  ></Route>
               </Routes> : <Routes>
               <Route path="/*" element={<Login role="Seller" domain={sub}/>}  ></Route>  
                 </Routes>

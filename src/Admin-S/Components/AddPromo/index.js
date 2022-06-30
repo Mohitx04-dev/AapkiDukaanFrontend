@@ -8,7 +8,7 @@ function Textfield(props) {
     <div className="col-span-6 sm:col-span-3">
       <label
         htmlFor="Code"
-        className="block text-sm font-medium text-gray-700"
+        className="block text-sm font-medium text-gray-700 m-2 flex flex-row text-GrayText"
       >
         {props.Label}
       </label>
@@ -45,12 +45,12 @@ const submit = (e) => {
     <div>
       <form onSubmit={submit}>
         <div className="shadow overflow-hidden ">
-          <h1 className=" text-2xl">Add Promo Codes</h1>
+          <h1 className=" mx-6 mt-4 text-2xl font-Roboto text-left">Add Promo Codes</h1>
 
           <div className=" bg-white ">
-            <div className="flex flex-row ">
-              <div className="flex flex-col m-20">
-                <Textfield
+            <div className="  m-10 p-5 bg-WbgGrey rounded-xl">
+              <div className="flex m-10 justify-between ">
+                <Textfield 
                 
                   Label="Code Name"
                   Type="text"
@@ -77,7 +77,7 @@ const submit = (e) => {
           <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
             <button
               type="submit"
-              className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-lightgreen hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-NavbarBg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             >
               Save
             </button>
